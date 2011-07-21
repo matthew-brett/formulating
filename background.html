@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Background &mdash; formulating v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="formulating v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to formulating’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to formulating’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">formulating v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="multiple-regression">
+<h2>Multiple regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h2>
+<p>A simple slope and intercept regression model can be written as:</p>
+<div class="math">
+<p><img src="_images/math/c59c77fbffa43625348de3d12091e8925b54577c.png" alt="y_i = \beta x_i + c + e_i" /></p>
+</div><p>where <img class="math" src="_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> indexes the observations <img class="math" src="_images/math/6dc54f21c8341485134d517c7738270307cd8c67.png" alt="1..N"/>.  By replacing <img class="math" src="_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/> with a vector of
+length <img class="math" src="_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/> containing ones, we can rewrite this model in matrix form:</p>
+<div class="math">
+<p><img src="_images/math/c91b0c027c5c3d83bc8199028a5eaa01b872df8f.png" alt="Y = X B + E" /></p>
+</div><p>where:</p>
+<ul class="simple">
+<li><img class="math" src="_images/math/ce58e4af225c93d08606c26554caaa5ae32edeba.png" alt="Y"/> is a column vector containing <img class="math" src="_images/math/58d496b2aa7284186143be8dd2c43e868f2ac650.png" alt="y_1 .. y_N"/></li>
+<li><img class="math" src="_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> is a matrix shape (N, 2), where the first column is the vector <img class="math" src="_images/math/7c4f8462f3a419e5f6efc3cab5c171f312c9624d.png" alt="x_1 ..
+x_N"/>, and the second column is a vector of ones.</li>
+<li><img class="math" src="_images/math/ff5fb3d775862e2123b007eb4373ff6cc1a34d4e.png" alt="B"/> is the parameter matrix, shape (2, 1), where <img class="math" src="_images/math/dd2039d069df7e81aacd78e0571c55a6fe0ba2ab.png" alt="B_{11} = \beta"/> (above), and
+<img class="math" src="_images/math/677e7799433afd9e41d5b5f610968cd5c79c4832.png" alt="B_{21} = c"/> (above).</li>
+<li><img class="math" src="_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/> is the vector of errors <img class="math" src="_images/math/c69450b517b5b97d5f84c19f55564751191d836c.png" alt="e_1 .. e_N"/>.</li>
+</ul>
+<p><img class="math" src="_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> is the <em>design matrix</em>.  <img class="math" src="_images/math/ff5fb3d775862e2123b007eb4373ff6cc1a34d4e.png" alt="B"/> is the <em>beta</em> matrix.</p>
+<p>So far we have a single regressor <img class="math" src="_images/math/8af93d5735653cd83e15920aa58006954e58e575.png" alt="x_1 .. x_N"/>.   Let us append another regressor
+to the model, <img class="math" src="_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z"/>, with values <img class="math" src="_images/math/346b4c090c0a97c44d9565ed35acfaec05cd6fb8.png" alt="z_1 .. z_N"/></p>
+<div class="math">
+<p><img src="_images/math/f15256a2966c4ca43595580601b15daf8cb2767f.png" alt="y_i = \beta_x x_i + \beta_z z_i + c + e_i" /></p>
+</div><p>The corresponding design matrix <img class="math" src="_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> now has three columns with the second
+containng <img class="math" src="_images/math/0ae0e75f36e32932263c8d6e8a28e5b913102853.png" alt="z_1 ..  z_N"/>, the parameter matrix <img class="math" src="_images/math/ff5fb3d775862e2123b007eb4373ff6cc1a34d4e.png" alt="B"/> contains three entries
+<img class="math" src="_images/math/50003c47825331f53a087875a3ee07bbed5ee96b.png" alt="[\beta_x, \beta_z, c]"/>.  This is obviously <em>multiple regression</em>.</p>
+</div>
+<div class="section" id="the-contrast-matrix">
+<h2>The contrast matrix<a class="headerlink" href="#the-contrast-matrix" title="Permalink to this headline">¶</a></h2>
+<p>We can do hypothesis testing by applying a <em>contrast vector</em> <img class="math" src="_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> to the
+parameter matrix. Let <img class="math" src="_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> be a column vector.  We express our hypothesis with:</p>
+<div class="math">
+<p><img src="_images/math/5e7712796fa3aaccc9290fa708534e03c3f35b8c.png" alt="C^T B" /></p>
+</div><p>For example, on the null hypothesis of no effect of regressor <img class="math" src="_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/>, we would
+expect <img class="math" src="_images/math/6168b371ce230b26fcd244262f7c4f476f0c2407.png" alt="\beta_x"/> (== <img class="math" src="_images/math/3d8e144f2cc57f5f484c31b55a506e6849ab13a3.png" alt="B_{11}"/>) not to differ from 0. With <img class="math" src="_images/math/911bde7648312857f727b724b8f80efe66800d6d.png" alt="C = [1, 0, 0]^T"/>,
+<img class="math" src="_images/math/07dc259f286fa654723f246c035696d8e123b3c2.png" alt="C^T B == B_{11} == \beta_x"/>.  Thus <img class="math" src="_images/math/ac2c4d6ce794f52882a808cd70a82fb98650c927.png" alt="C^T B"/> results in a number (here <img class="math" src="_images/math/3d8e144f2cc57f5f484c31b55a506e6849ab13a3.png" alt="B_{11}"/>)
+that we expect to be 0 on the null hypothesis.</p>
+<p>Although this example is trivial, the contrast vector obviously allows us to
+test more complicated things like the difference between the slopes for the
+first and second regressor, with <img class="math" src="_images/math/2708b6147f30e0ad8fed04342a7d5ec96185b1bd.png" alt="C = [1, -1, 0]^T"/>.</p>
+</div>
+<div class="section" id="formulae-and-contrasts">
+<h2>Formulae and contrasts<a class="headerlink" href="#formulae-and-contrasts" title="Permalink to this headline">¶</a></h2>
+<p>In the examples above, it is very simple to go from the regressors in the formal
+model:</p>
+<div class="math">
+<p><img src="_images/math/f15256a2966c4ca43595580601b15daf8cb2767f.png" alt="y_i = \beta_x x_i + \beta_z z_i + c + e_i" /></p>
+</div><p>to the columns in the design matrix, and thence to the contrast matrix we need
+to test for our effects.  However, imagine a model with more regressors, and
+where the regressors have handy names, say:</p>
+<div class="math">
+<p><img src="_images/math/2484a3ec9a36601eb91501200bbf2b876c342be9.png" alt="y_i = \beta_f f_i + \beta_g g_i + \beta_h h_i + \beta_k k_i + c + e_i" /></p>
+</div><p>Quick, what&#8217;s the contrast for the slope of <img class="math" src="_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/> greater than the slope for <img class="math" src="_images/math/311cabda3a9b09f0dde217303ca9d1cd9201dcf6.png" alt="g"/>?
+You can work it out by running your finger over the model and counting where <img class="math" src="_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k"/>
+and <img class="math" src="_images/math/311cabda3a9b09f0dde217303ca9d1cd9201dcf6.png" alt="g"/> are in the regressor order, and get, correctly, <img class="math" src="_images/math/8deab165a3d2d413ba18a507e36f75eb24601fc8.png" alt="C = [0, -1, 0, 1,
+0]^T"/>. But, even with this small number of regressors, it&#8217;s probably easy to see
+this could get ugly and error prone.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Background</a><ul>
+<li><a class="reference internal" href="#multiple-regression">Multiple regression</a></li>
+<li><a class="reference internal" href="#the-contrast-matrix">The contrast matrix</a></li>
+<li><a class="reference internal" href="#formulae-and-contrasts">Formulae and contrasts</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to formulating&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/background.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to formulating’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">formulating v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, statsmodels team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
