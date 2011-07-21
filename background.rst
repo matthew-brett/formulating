@@ -61,5 +61,27 @@ Although this example is trivial, the contrast vector obviously allows us to
 test more complicated things like the difference between the slopes for the
 first and second regressor, with $C = [1, -1, 0]^T$.
 
+**********************
+Formulae and contrasts
+**********************
 
+In the examples above, it is very simple to go from the regressors in the formal
+model:
 
+.. math::
+
+    y_i = \beta_x x_i + \beta_z z_i + c + e_i
+
+to the columns in the design matrix, and thence to the contrast matrix we need
+to test for our effects.  However, imagine a model with more regressors, and
+where the regressors have handy names, say:
+
+.. math::
+
+    y_i = \beta_f f_i + \beta_g g_i + \beta_h h_i + \beta_k k_i + c + e_i
+
+Quick, what's the contrast for the slope of $k$ greater than the slope for $g$?
+You can work it out by running your finger over the model and counting where $k$
+and $g$ are in the regressor order, and get, correctly, $C = [0, -1, 0, 1,
+0]^T$. But, even with this small number of regressors, it's probably easy to see
+this could get ugly and error prone.
