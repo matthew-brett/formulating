@@ -9,11 +9,14 @@ Multiple regression
 A simple slope and intercept regression model can be written as:
 
 .. math::
+    :label: model
 
     y_i = \beta x_i + c + e_i
 
 where $i$ indexes the observations $1..N$.  By replacing $c$ with a vector of
 length $N$ containing ones, we can rewrite this model in matrix form:
+
+(Which is the same as :eq:`model`:
 
 .. math::
 
